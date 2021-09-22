@@ -27,9 +27,42 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // RETURNS
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
+  // References:
+  // https://www.codegrepper.com/code-examples/javascript/validate+url+in+typescript
+  // Validating image url
+  
+  function isValidURL(string: any) {
+    var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    return (res !== null)
+  };
+  
+  app.get("/filteredimage", async (req, res) => {
+    
+    let image_url = req.query.image_url;
+    let valid_url = isValidURL(image_url);
+
+    if (!image_url) {
+      return res.status(400).send("image_url is Required");
+    }
+
+    if (valid_url) {
+      
+      const image_path = await filterImageFromURL(image_url);
+      
+      res.sendFile(image_path, function() {
+        deleteLocalFiles([image_path]);
+      });
+    }
+    else {
+      return res.status(400).send("Incorrect image_url");
+    }
+  });
+
+
   /**************************************************************************** */
 
   //! END @TODO1
+
   
   // Root Endpoint
   // Displays a simple message to the user
