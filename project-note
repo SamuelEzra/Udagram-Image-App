@@ -1,0 +1,20 @@
+PROJECT 2: UDAGRAM IMAGE FILTERING MICROSERVICE
+By: Ezra Samuel
+
+Modifications
+The project was completed successfully. There were a few modifications made.
+-	util.ts was modified to be able to catch an error.
+-	package.json - “build” was modified to correct npm run build errors.
+-	Also, the image URL given 
+(https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg) 
+does not seem to be available anymore. Hence, I used a publicly accessible image from my 
+S3 bucket to verify. The image URL is: https://ezra-728467082340.s3.amazonaws.com/xander2.jpg.
+
+Links
+•	Github Repository Link: https://github.com/SamuelEzra/Udagram-Image-App
+•	Elastic Beanstalk Endpoint URL: udagram-app-dev.us-east-1.elasticbeanstalk.com
+
+References:
+https://www.codegrepper.com/code-examples/javascript/validate+url+in+typescript
+https://knowledge.udacity.com/questions/229274
+https://www.npmjs.com/package/jimp
